@@ -30,7 +30,11 @@ jobs:
 
       - name: Compare Files
         id: source
-        run: node workflow/work.mjs >> "${GITHUB_OUTPUT}" # ページリストが同じなら正常終了、違う場合はファイルを置き換え
+        # run: node workflow/work.mjs >> "${GITHUB_OUTPUT}" # ページリストが同じなら正常終了、違う場合はファイルを置き換え
+        run: |
+          node workflow/work.mjs # ページリストが同じなら正常終了、違う場合はファイルを置き換え
+          result=$?
+          echo "Previous $result"
 
       - name: Branching based on script result
         if: ${{ steps.source.outputs.result == 'success' }}
