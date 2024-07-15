@@ -30,20 +30,20 @@ jobs:
 
       - name: Compare Files
         id: source
-        # run: node workflow/work.mjs >> "${GITHUB_OUTPUT}" # ページリストが同じなら正常終了、違う場合はファイルを置き換え
+        continue-on-error: true
         run: |
           node workflow/work.mjs # ページリストが同じなら正常終了、違う場合はファイルを置き換え
           result=$?
-          echo "Previous $result"
+          echo "$result" >> "${GITHUB_OUTPUT}"
 
       - name: Branching based on script result
-        if: ${{ steps.source.outputs.result == 'success' }}
+        if: ${{ steps.source.outputs.result == 0 }}
         run: |
           echo "Script returned success!"
           # Add steps for success case, e.g., deploy, notify, etc.
 
       - name: Handle failure case
-        if: ${{ steps.source.outputs.result != 'success' }}
+        if: ${{ steps.source.outputs.result != 1 }}
         run: |
           echo "Script did not return success."
           # Add steps for failure case, e.g., log error, notify, etc.
