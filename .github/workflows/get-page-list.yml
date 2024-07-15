@@ -23,6 +23,8 @@ jobs:
 
       - name: Compare Files
         run: |
+          pwd
+          ls -la
           if diff -q page-list.json ./src/page-list.json; then
             echo "Files are the same"
           else
