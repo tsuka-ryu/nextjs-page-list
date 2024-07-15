@@ -29,16 +29,17 @@ jobs:
         run: npx prettier -w page-list.mjs # Prettierでフォーマットしておく
 
       - name: Compare Files
+        id: source
         run: node workflow/work.mjs >> "${GITHUB_OUTPUT}" # ページリストが同じなら正常終了、違う場合はファイルを置き換え
 
       - name: Branching based on script result
-        if: ${{ steps.outputs.result == 'success' }}
+        if: ${{ steps.source.outputs.result == 'success' }}
         run: |
           echo "Script returned success!"
           # Add steps for success case, e.g., deploy, notify, etc.
 
       - name: Handle failure case
-        if: ${{ steps.outputs.result != 'success' }}
+        if: ${{ steps.source.outputs.result != 'success' }}
         run: |
           echo "Script did not return success."
           # Add steps for failure case, e.g., log error, notify, etc.
