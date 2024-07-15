@@ -1,5 +1,5 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
 // 再帰的にディレクトリを走査してファイルパスを取得する関数
 const getAllPaths = (dir, filelist = []) => {

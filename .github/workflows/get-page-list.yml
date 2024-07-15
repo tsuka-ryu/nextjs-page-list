@@ -19,7 +19,7 @@ jobs:
           node-version: latest
 
       - name: Generate File
-        run: node workflow/get-page-list.js # ページリストを生成するコマンドを実行
+        run: node workflow/get-page-list.mjs # ページリストを生成するコマンドを実行
 
       - name: Prettier format
         run: npx prettier -w page-list.mjs # Prettierでフォーマットしておく 
