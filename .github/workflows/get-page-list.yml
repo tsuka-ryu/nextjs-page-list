@@ -1,4 +1,4 @@
-name: Compare Files
+name: Update Page List 
 
 on: [workflow_dispatch]
 #   push:
@@ -26,3 +26,7 @@ jobs:
 
       - name: Compare Files
         run: node workflow/work.mjs # ページリストが同じなら正常終了、違う場合はファイルを置き換え
+    
+      - name: Create PR
+        run: |
+          echo "Create PR"
