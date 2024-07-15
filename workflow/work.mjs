@@ -33,8 +33,6 @@ loadPageList()
       process.exit(0);
     }
 
-    console.log("false!!!!!");
-
     // 違った場合はPRで新規にファイル作成
     fs.unlink(prevPath, (err) => {
       console.log("unlink", { err });
@@ -42,6 +40,7 @@ loadPageList()
     fs.rename(nextPath, prevPath, (err) => {
       console.log("rename", { err });
     });
+    console.log("Success");
     process.exit(0);
   })
   .catch((error) => {
