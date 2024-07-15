@@ -38,24 +38,13 @@ jobs:
             echo "result=failure" >> ${GITHUB_OUTPUT} 
           fi
 
-      - name: Branching based on script result
-        if: ${{ steps.source.outputs.result == 'success' }}
-        run: |
-          echo "Script returned success!"
-          # Add steps for success case, e.g., deploy, notify, etc.
-
-      - name: Handle failure case
-        if: ${{ steps.source.outputs.result != 'success'}}
-        run: |
-          echo "Script did not return success."
-          # Add steps for failure case, e.g., log error, notify, etc.
-
       - name: Create PR
         env:
           USERNAME: github-actions[bot]
           EMAIL: github-actions[bot]@users.noreply.github.com
           BRANCH: auto/${{github.run_id}}/${{github.run_attempt}}
           GITHUB_TOKEN: ${{github.token}}
+        if: ${{ steps.source.outputs.result == 'success' }}
         run: |
           echo "branch=${BRANCH}" >> "${GITHUB_OUTPUT}"
           git config --global user.name "${USERNAME}"
