@@ -30,7 +30,7 @@ loadPageList()
     // 同じなら正常終了
     if (arraysAreEqual(prevPages, nextPages)) {
       console.log("No diff");
-      process.exit(0);
+      process.exit(1);
     }
 
     // 違った場合はPRで新規にファイル作成
