@@ -34,6 +34,7 @@ jobs:
         run: |
           node workflow/work.mjs # ページリストが同じなら正常終了、違う場合はファイルを置き換え
           result=$?
+          echo "$result"
           echo "$result" >> "${GITHUB_OUTPUT}"
 
       - name: Branching based on script result
