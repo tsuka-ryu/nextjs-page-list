@@ -8,5 +8,6 @@ export const PAGES = [
 "/hoge/confirm/[id]",
 "/hoge/create",
 "/hoge/edit/[id]",
+"/hoge/new",
 "/"
 ]
