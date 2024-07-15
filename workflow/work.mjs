@@ -29,7 +29,7 @@ loadPageList()
 
     // 同じなら正常終了
     if (arraysAreEqual(prevPages, nextPages)) {
-      console.log("No diff");
+      // console.log("No diff");
       process.exit(1);
     }
 
@@ -40,7 +40,7 @@ loadPageList()
     fs.rename(nextPath, prevPath, (err) => {
       console.log("rename", { err });
     });
-    console.log("Success");
+    // console.log("Success");
     process.exit(0);
   })
   .catch((error) => {
