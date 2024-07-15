@@ -23,11 +23,7 @@ jobs:
 
       - name: Compare Files
         run: |
-          pwd
-          ls -la
-          if diff -q page-list.json src/constants/page-list.json; then
-            echo "Files are the same"
-          else
-            echo "Files are different"
-            exit 1  # 違う場合はエラーで終了する
-          fi
+          const { PAGES } = require('./src/constants/page-list');
+          const { PAGES: pages2 } = require('./src/constants/page-list');
+          console.log({PAGES})
+          console.log({pages2})

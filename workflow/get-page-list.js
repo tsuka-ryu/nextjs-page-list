@@ -42,11 +42,17 @@ const pagePaths = paths.map((filePath) => {
     pagePath = pagePath.slice(0, -1);
   }
 
-  return pagePath;
+  return `"${pagePath}"`;
 });
 
 // 結果を表示
 console.log(pagePaths);
 
+// 定数にする
+const output = `export const PAGES = [
+${pagePaths.filter((v) => v).join(",\n")}
+]`;
+
 // ファイルに書き出し
-fs.writeFileSync("page-list.json", JSON.stringify(pagePaths));
+const outputPath = path.join(process.cwd(), "page-list.mjs");
+fs.writeFileSync(outputPath, output);
