@@ -29,12 +29,19 @@ loadPageList()
 
     // 同じなら正常終了
     if (arraysAreEqual(prevPages, nextPages)) {
+      console.log("No diff");
       process.exit(0);
     }
 
+    console.log("false!!!!!");
+
     // 違った場合はPRで新規にファイル作成
-    fs.unlink(prevPath);
-    fs.rename(nextPath, prevPath);
+    fs.unlink(prevPath, (err) => {
+      console.log("unlink", { err });
+    });
+    fs.rename(nextPath, prevPath, (err) => {
+      console.log("rename", { err });
+    });
     process.exit(0);
   })
   .catch((error) => {
