@@ -33,9 +33,9 @@ jobs:
         continue-on-error: true
         run: |
           if node workflow/work.mjs; then # ページリストが同じなら正常終了、違う場合はファイルを置き換え
-            echo "success" >> ${GITHUB_OUTPUT} 
+            echo "result=success" >> ${GITHUB_OUTPUT} 
           else
-            echo "failure" >> ${GITHUB_OUTPUT} 
+            echo "result=failure" >> ${GITHUB_OUTPUT} 
           fi
 
       - name: Branching based on script result
