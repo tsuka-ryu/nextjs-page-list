@@ -1,11 +1,12 @@
 import path from "path";
+import fs from "fs";
+
+const prevPath = path.join(process.cwd(), "src/constants/page-list.mjs");
+const nextPath = path.join(process.cwd(), "page-list.mjs");
 
 // 非同期関数内でのawaitの使用例
 async function loadPageList() {
-  const prevPath = path.join(process.cwd(), "src/constants/page-list.mjs");
   const prevPageList = await import(prevPath);
-
-  const nextPath = path.join(process.cwd(), "page-list.mjs");
   const nextPageList = await import(nextPath);
 
   return [prevPageList, nextPageList];
@@ -32,7 +33,9 @@ loadPageList()
     }
 
     // 違った場合はPRで新規にファイル作成
-    // TODO:
+    fs.unlink(prevPath);
+    fs.rename(nextPath, prevPath);
+    process.exit(0);
   })
   .catch((error) => {
     console.error("ページリストをロードできませんでした", error);
