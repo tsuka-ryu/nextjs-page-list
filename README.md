@@ -6,3 +6,6 @@
 - `.github/workflows/get-page-list.yml`：本体
 - `workflow/get-page-list.js`：ページリストを吐き出すスクリプト
 - `workflow/work.mjs`：差分をチェックするスクリプト
+
+## memo
+- [GitHub ActionsでのPR操作権限はデフォルトでオフになったよ](https://zenn.dev/kenghaya/articles/d7f766e5db6437)
