@@ -32,19 +32,20 @@ jobs:
         id: source
         continue-on-error: true
         run: |
-          node workflow/work.mjs # ページリストが同じなら正常終了、違う場合はファイルを置き換え
-          result=$?
-          echo "$result"
-          echo "$result" >> "${GITHUB_OUTPUT}"
+          if node workflow/work.mjs; then # ページリストが同じなら正常終了、違う場合はファイルを置き換え
+            echo "success" >> ${GITHUB_OUTPUT} 
+          else
+            echo "failure" >> ${GITHUB_OUTPUT} 
+          fi
 
       - name: Branching based on script result
-        if: ${{ steps.source.outputs.result == 0 }}
+        if: ${{ steps.source.outputs.result == 'success' }}
         run: |
           echo "Script returned success!"
           # Add steps for success case, e.g., deploy, notify, etc.
 
       - name: Handle failure case
-        if: ${{ steps.source.outputs.result != 1 }}
+        if: ${{ steps.source.outputs.result != 'success'}}
         run: |
           echo "Script did not return success."
           # Add steps for failure case, e.g., log error, notify, etc.
