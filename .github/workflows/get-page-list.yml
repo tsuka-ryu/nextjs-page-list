@@ -21,5 +21,8 @@ jobs:
       - name: Generate File
         run: node workflow/get-page-list.js # ページリストを生成するコマンドを実行
 
+      - name: Prettier format
+        run: npx prettier -w page-list.mjs # Prettierでフォーマットしておく 
+
       - name: Compare Files
-        run: node workflow/work.mjs
+        run: node workflow/work.mjs # ページリストが同じなら正常終了、違う場合はファイルを置き換え
