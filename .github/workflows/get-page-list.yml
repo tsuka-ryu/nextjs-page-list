@@ -1,9 +1,10 @@
 name: Update Page List
 
-on: [workflow_dispatch]
-#   push:
-#     branches:
-#       - main  # トリガーとなるブランチを設定
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main # トリガーとなるブランチを設定
 
 permissions:
   contents: write
