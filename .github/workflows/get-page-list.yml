@@ -4,5 +4,5 @@ jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, world"
+      - run: cat 'src/constants/page-list.ts'
       - uses: actions/checkout@v4

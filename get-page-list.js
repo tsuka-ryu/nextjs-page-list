@@ -47,3 +47,6 @@ const pagePaths = paths.map((filePath) => {
 
 // 結果を表示
 console.log(pagePaths);
+
+// ファイルに書き出し
+fs.writeFileSync("page-list.json", JSON.stringify(pagePaths));
