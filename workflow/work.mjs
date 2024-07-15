@@ -26,9 +26,13 @@ loadPageList()
     const { PAGES: prevPages } = prev;
     const { PAGES: nextPages } = next;
 
+    // 同じなら正常終了
     if (arraysAreEqual(prevPages, nextPages)) {
       process.exit(0);
     }
+
+    // 違った場合はPRで新規にファイル作成
+    // TODO:
   })
   .catch((error) => {
     console.error("ページリストをロードできませんでした", error);

@@ -19,11 +19,7 @@ jobs:
           node-version: latest
 
       - name: Generate File
-        run: node get-page-list.js # ページリストを生成するコマンドを実行
+        run: node workflow/get-page-list.js # ページリストを生成するコマンドを実行
 
       - name: Compare Files
-        run: |
-          const { PAGES } = require('./src/constants/page-list');
-          const { PAGES: pages2 } = require('./src/constants/page-list');
-          console.log({PAGES})
-          console.log({pages2})
+        run: node workflow/work.mjs
