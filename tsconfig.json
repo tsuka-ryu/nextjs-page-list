@@ -16,6 +16,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "workflow/get-page-list.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "workflow/get-page-list.mjs"],
   "exclude": ["node_modules"]
 }

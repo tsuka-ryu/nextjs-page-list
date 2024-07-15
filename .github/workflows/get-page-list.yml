@@ -1,4 +1,4 @@
-name: Compare Files
+name: Update Page List 
 
 on: [workflow_dispatch]
 #   push:
@@ -19,10 +19,14 @@ jobs:
           node-version: latest
 
       - name: Generate File
-        run: node workflow/get-page-list.js # ページリストを生成するコマンドを実行
+        run: node workflow/get-page-list.mjs # ページリストを生成するコマンドを実行
 
       - name: Prettier format
         run: npx prettier -w page-list.mjs # Prettierでフォーマットしておく 
 
       - name: Compare Files
         run: node workflow/work.mjs # ページリストが同じなら正常終了、違う場合はファイルを置き換え
+    
+      - name: Create PR
+        run: |
+          echo "Create PR"
