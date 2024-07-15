@@ -2,6 +2,7 @@ export const PAGES = [
   "/_app.tsx",
   "/_document.tsx",
   "/api/hello.ts",
+  "/bar/create",
   "/fuga/confirm/[confirmId]",
   "/fuga/create",
   "/fuga/edit/[someId]",
